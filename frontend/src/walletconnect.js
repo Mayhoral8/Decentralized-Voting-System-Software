@@ -6,7 +6,7 @@ import {
 } from "@web3modal/ethers/react";
 
 // 1. Get projectId
-const projectId = "235518f3cebbe81b84aea6c1441a1e7f";
+const projectId = process.env.REACT_APP_WALLET_CONNECT_PROJECT_ID;
 
 // 2. Set chains
 const mainnet = {
