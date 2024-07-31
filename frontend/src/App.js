@@ -2,7 +2,8 @@
 import React, { useEffect } from 'react';
 import Main from './main';
 import { Route, Routes } from 'react-router-dom';
-
+import ViewProposal from './viewProposal';
+import CreateProposals from './CreateProposals';
 
 
 const App = () => {
@@ -10,7 +11,8 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Main />}/>
-      {/* <WalletConnect/> */}
+      <Route path="/viewProposal" element={<ViewProposal />}/>
+      <Route path="/createProposal" element={<CreateProposals />}/>
     </Routes>
 
   );
