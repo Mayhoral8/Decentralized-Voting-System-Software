@@ -1,29 +1,17 @@
 import React, {useEffect, useState} from 'react'
 import useWalletConnect from './walletconnect'
 import { useWeb3ModalAccount } from '@web3modal/ethers/react' 
+import { CiWallet } from "react-icons/ci";
 import {GoDotFill} from 'react-icons/go'
+import proposalImg from './assets/proposal_img1.png'
+import Navbar from './header';
 
 const Main = () => {
-    const { address, chainId, isConnected } = useWeb3ModalAccount()
-    const [walletaAddress, setWalletAddress] = useState('')
-
-    useEffect(()=>{
-      isConnected ? setWalletAddress(()=>{
-        const prefix = address.slice(0, 6);
-        const suffix = address.slice(-4);
-        const formattedAddress = `${prefix}...${suffix}`;
-        return formattedAddress
-      }): setWalletAddress('')
-    }, [isConnected])
-
-    const {connectWallet, closeWallet} = useWalletConnect()
+  
+   
   return (
     <div className='h-fit flex items-center justify-center  flex-col w-full px-4 py-2 '>
-        <div className='flex fixed bg-white top-0 w-full h-6 px-2'>
-          <div className='ml-auto'>
-        {walletaAddress !== '' ? <button className='w-32 rounded-md mt-2 shadow-md border' onClick={connectWallet}>{walletaAddress}</button> : <button onClick={connectWallet} className='border w-24 shadow-md  bg-[#266DD3] text-white rounded-md'>Connect</button>}
-        </div> 
-          </div>
+        <Navbar/>
         <h2 className='text-2xl lg:text-4xl mt-4'>
         Ecosystem Proposals
         </h2>
@@ -31,8 +19,11 @@ const Main = () => {
 
         <section className='w-[70%] lg:w-[60%] mt-4  flex flex-col gap-y-4'>
            
+           
             <article className=' rounded-sm flex flex-col lg:flex-row justify-between border w-full h-64 bg-white shadow-lg'>
-              <div className='h-[30%] lg:h-full lg:order-2'>Img</div>
+              <div className='h-[30%] lg:h-full  lg:order-2 flex items-center  mx-auto'>
+                <img className='h-full' src={proposalImg}/>
+              </div>
               <div className='border lg:h-full  h-[70%] lg:w-[70%] flex justify-evenly flex-col px-2'>
                 <div className='flex flex-row items-center text-xs text-[#B08EA2]'>
                 <GoDotFill/>
@@ -53,7 +44,9 @@ const Main = () => {
 
             </article>
             <article className=' rounded-sm flex flex-col lg:flex-row justify-between border w-full h-64 bg-white shadow-lg'>
-              <div className='h-[30%] lg:h-full lg:order-2'>Img</div>
+              <div className='h-[30%] lg:h-full  lg:order-2 flex items-center  mx-auto'>
+                <img className='h-full' src={proposalImg}/>
+              </div>
               <div className='border lg:h-full  h-[70%] lg:w-[70%] flex justify-evenly flex-col px-2'>
                 <div className='flex flex-row items-center text-xs text-[#B08EA2]'>
                 <GoDotFill/>
@@ -74,7 +67,9 @@ const Main = () => {
 
             </article>
             <article className=' rounded-sm flex flex-col lg:flex-row justify-between border w-full h-64 bg-white shadow-lg'>
-              <div className='h-[30%] lg:h-full lg:order-2'>Img</div>
+              <div className='h-[30%] lg:h-full  lg:order-2 flex items-center  mx-auto'>
+                <img className='h-full' src={proposalImg}/>
+              </div>
               <div className='border lg:h-full  h-[70%] lg:w-[70%] flex justify-evenly flex-col px-2'>
                 <div className='flex flex-row items-center text-xs text-[#B08EA2]'>
                 <GoDotFill/>
@@ -94,6 +89,8 @@ const Main = () => {
               </div>
 
             </article>
+           
+         
             <h2 className='text-[#266DD3] text-center font-bold'>See More</h2>
         </section>
 
