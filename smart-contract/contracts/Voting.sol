@@ -15,7 +15,7 @@ contract Voting {
     }
 
     mapping(address => Voter) public voters;
-    uint public proposalCount;
+    uint public proposalCount;   
     // List of all proposals
     Proposal[] public proposals;
 
@@ -49,6 +49,10 @@ contract Voting {
         emit CreateProposal(_title, _description, msg.sender );
         proposalCount++;
     }
+    // To get list of all proposals
+    function getProposals() public view returns (Proposal[] memory) {
+        return proposals;
+    }
     // To get vote count of a proposal
     function getVoteCount(uint proposalId) public view proposalExists(proposalId) returns (uint) {
         return proposals[proposalId].voteCount;
@@ -57,5 +61,5 @@ contract Voting {
     function getProposalDetails(uint proposalId) public view proposalExists(proposalId) returns (string memory, string memory, uint, address) {
         Proposal memory proposal = proposals[proposalId];
         return (proposal.title, proposal.description, proposal.voteCount, proposal.creator);
-    }
+    }  
 }
